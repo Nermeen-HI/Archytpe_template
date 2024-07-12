@@ -1,0 +1,248 @@
+archetype (adl_version=1.4; uid=725f9b17-4905-41b0-a426-a7e69744229b)
+	openEHR-EHR-OBSERVATION.breast_inspection.v0
+
+concept
+	[at0000]
+
+language
+	original_language = <[ISO_639-1::en]>
+
+description
+	original_author = <
+		["date"] = <"2024-05-29">
+	>
+	lifecycle_state = <"unmanaged">
+	details = <
+		["en"] = <
+			language = <[ISO_639-1::en]>
+		>
+	>
+	other_details = <
+		["licence"] = <"This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/.">
+		["custodian_organisation"] = <"openEHR Foundation">
+		["original_namespace"] = <"org.openehr">
+		["original_publisher"] = <"openEHR Foundation">
+		["custodian_namespace"] = <"org.openehr">
+		["MD5-CAM-1.0.1"] = <"d402581f92a6ecd52fd0bc61c89b2018">
+		["build_uid"] = <"00cc1cea-ff8c-35fc-8de2-8304d217cb7b">
+	>
+
+definition
+	OBSERVATION[at0000] matches {    -- Breast inspection
+		data matches {
+			HISTORY[at0001] matches {    -- History
+				events cardinality matches {1..*; unordered} matches {
+					EVENT[at0002] occurrences matches {0..*} matches {    -- Breast inspection
+						data matches {
+							ITEM_TREE[at0003] matches {    -- Tree
+								items cardinality matches {0..*; unordered} matches {
+									ELEMENT[at0006] occurrences matches {0..1} matches {    -- Appearance
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0007,    -- Normal
+													at0008]    -- Abnormal
+												}
+											}
+										}
+									}
+									ELEMENT[at0009] occurrences matches {0..1} matches {    -- Changes
+										value matches {
+											DV_CODED_TEXT matches {
+												defining_code matches {
+													[local::
+													at0010,    -- Skin
+													at0011]    -- Nipple
+												}
+											}
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0012] occurrences matches {0..1} matches {    -- Nipple discharge
+										value matches {
+											DV_BOOLEAN matches {*}
+										}
+									}
+									ELEMENT[at0013] occurrences matches {0..1} matches {    -- Comments
+										value matches {
+											DV_TEXT matches {*}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		protocol matches {
+			ITEM_TREE[at0014] matches {    -- Item tree
+				items cardinality matches {0..*; unordered} matches {
+					ELEMENT[at0017] occurrences matches {0..1} matches {    -- Lump in breast
+						value matches {
+							DV_BOOLEAN matches {*}
+						}
+					}
+					ELEMENT[at0018] occurrences matches {0..1} matches {    -- Lump description if any
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0019] occurrences matches {0..1} matches {    -- Enlarged lymph nodes
+						value matches {
+							DV_BOOLEAN matches {*}
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0020,    -- Axillary Lymph Nodes
+									at0021,    -- Supraclavicular Lymph Nodes
+									at0022]    -- Lymph nodes not enlarged
+								}
+							}
+						}
+					}
+					ELEMENT[at0028] occurrences matches {0..1} matches {    -- Comments
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0036] occurrences matches {0..1} matches {    -- Clinical interpretation
+						value matches {
+							DV_TEXT matches {*}
+						}
+					}
+					ELEMENT[at0029] occurrences matches {0..1} matches {    -- Clinical recommendations
+						value matches {
+							DV_CODED_TEXT matches {
+								defining_code matches {
+									[local::
+									at0031,    -- Discharged
+									at0032,    -- Routine Follow-Up
+									at0033,    -- Referral to diagnostic imaging
+									at0034,    -- Referral for biopsy
+									at0035]    -- Referral to a consultant
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["en"] = <
+			items = <
+				["at0000"] = <
+					text = <"Breast inspection">
+					description = <"Breast inspection">
+				>
+				["at0001"] = <
+					text = <"History">
+					description = <"@ internal @">
+				>
+				["at0002"] = <
+					text = <"Breast inspection">
+					description = <"@ internal @">
+				>
+				["at0003"] = <
+					text = <"Tree">
+					description = <"@ internal @">
+				>
+				["at0006"] = <
+					text = <"Appearance">
+					description = <"">
+				>
+				["at0007"] = <
+					text = <"Normal">
+					description = <"">
+				>
+				["at0008"] = <
+					text = <"Abnormal">
+					description = <"">
+				>
+				["at0009"] = <
+					text = <"Changes">
+					description = <"">
+				>
+				["at0010"] = <
+					text = <"Skin">
+					description = <"">
+				>
+				["at0011"] = <
+					text = <"Nipple">
+					description = <"">
+				>
+				["at0012"] = <
+					text = <"Nipple discharge">
+					description = <"">
+				>
+				["at0013"] = <
+					text = <"Comments">
+					description = <"">
+				>
+				["at0014"] = <
+					text = <"Item tree">
+					description = <"@ internal @">
+				>
+				["at0017"] = <
+					text = <"Lump in breast">
+					description = <"">
+				>
+				["at0018"] = <
+					text = <"Lump description if any">
+					description = <"">
+				>
+				["at0019"] = <
+					text = <"Enlarged lymph nodes">
+					description = <"">
+				>
+				["at0020"] = <
+					text = <"Axillary Lymph Nodes">
+					description = <"">
+				>
+				["at0021"] = <
+					text = <"Supraclavicular Lymph Nodes">
+					description = <"">
+				>
+				["at0022"] = <
+					text = <"Lymph nodes not enlarged">
+					description = <"">
+				>
+				["at0028"] = <
+					text = <"Comments">
+					description = <"">
+				>
+				["at0029"] = <
+					text = <"Clinical recommendations">
+					description = <"">
+				>
+				["at0031"] = <
+					text = <"Discharged">
+					description = <"">
+				>
+				["at0032"] = <
+					text = <"Routine Follow-Up">
+					description = <"">
+				>
+				["at0033"] = <
+					text = <"Referral to diagnostic imaging">
+					description = <"">
+				>
+				["at0034"] = <
+					text = <"Referral for biopsy">
+					description = <"">
+				>
+				["at0035"] = <
+					text = <"Referral to a consultant">
+					description = <"">
+				>
+				["at0036"] = <
+					text = <"Clinical interpretation">
+					description = <"">
+				>
+			>
+		>
+	>
